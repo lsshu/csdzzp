@@ -1,0 +1,141 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">用户信息</view>
+</cu-custom>
+
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='cuIcon-title text-orange '></text> 个人信息
+  </view>
+</view>
+
+
+<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+
+  <view class="cu-item">
+    <view class='content'>
+      <text class='cuIcon-wenzi text-grey'></text>
+      <text class='text-grey'>编号　{{info.number}}</text>
+    </view>
+  </view>
+
+  <view class="cu-item">
+    <view class='content'>
+      <text class='cuIcon-profile text-blue'></text>
+      <text class='text-grey'>姓名　{{info.name}}</text>
+    </view>
+  </view>
+
+  <view class="cu-item">
+    <view class='content'>
+      <text class='cuIcon-male text-green'></text>
+      <text class='text-grey'>性别　{{info.sex}}</text>
+    </view>
+  </view>
+
+  <view class="cu-item">
+    <view class='content'>
+      <text class='cuIcon-bad text-grey'></text>
+      <text class='text-grey'>辈分　{{info.level}} 世</text>
+    </view>
+  </view>
+
+  <view class="cu-item">
+    <view class='content'>
+      <text class='cuIcon-female text-red'></text>
+      <text class='text-grey'>婚否　{{info.is_marry}}</text>
+    </view>
+  </view>
+
+  <view class="cu-item">
+    <view class='content'>
+      <text class='cuIcon-circlefill text-yellow'></text>
+      <text class='text-grey'>其它　{{info.other}}</text>
+    </view>
+  </view>
+
+  <view class="cu-item">
+    <view class='content'>
+      <text class='cuIcon-footprint text-grey'></text>
+      <text class='text-grey'>出生　{{info.birth_at}}</text>
+    </view>
+  </view>
+
+</view>
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='cuIcon-title text-orange '></text> 家庭信息
+  </view>
+</view>
+<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+
+  <view class="cu-item arrow" wx:if="{{family.father != undefined }}">
+    <navigator class='content' hover-class='none' url='show?clans_id={{family.father.clans_id}}' open-type="navigateTo">
+      <text class='cuIcon-emoji text-blue'></text>
+      <text class='text-grey'>父亲　{{family.father.name}}</text>
+    </navigator>
+  </view>
+  <view class="cu-item" wx:if="{{family.mother != undefined }}">
+    <view class='content'>
+      <text class='cuIcon-service text-pink'></text>
+      <text class='text-grey'>母亲　{{family.mother.name}}</text>
+    </view>
+  </view>
+  <view class="cu-item" wx:if="{{info.is_marry == '已婚' && info.wife != ''}}">
+    <view class='content'>
+      <text class='cuIcon-service text-pink'></text>
+      <text class='text-grey'>妻子　{{info.wife}}</text>
+    </view>
+  </view>
+
+  <view class="cu-item arrow" wx:for="{{family.brother}}" wx:key wx:if="{{family.brother != undefined }}">
+    <navigator class='content' hover-class='none' url='show?clans_id={{item.clans_id}}' open-type="navigateTo">
+      <text class='cuIcon-male text-green'></text>
+      <text class='text-grey'>兄弟　{{item.name}}</text>
+    </navigator>
+  </view>
+
+  <view class="cu-item" wx:for="{{family.sister}}" wx:key wx:if="{{family.sister != undefined }}">
+    <view class='content'>
+      <text class='cuIcon-female text-orange'></text>
+      <text class='text-grey'>姐妹　{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="cu-item arrow" wx:for="{{family.children}}" wx:key wx:if="{{family.children != undefined }}">
+    <navigator class='content' hover-class='none' url='show?clans_id={{item.clans_id}}' open-type="navigateTo">
+      <text class='cuIcon-{{item.sex == "男" ? "male":"female"}} text-{{item.sex == "男" ?"cyan":"yellow"}}'></text>
+      <text class='text-grey'>{{item.sex == "男" ?"儿子":"女儿"}}　{{item.name}}</text>
+    </navigator>
+  </view>
+
+
+</view>
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='cuIcon-title text-orange '></text> 其它
+  </view>
+</view>
+<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+  <view class="cu-item arrow">
+    <navigator class='content' hover-class='none' url='chart?clans_id={{info.clans_id}}' open-type="navigateTo">
+      <text class='cuIcon-circlefill text-grey'></text>
+      <text class='text-grey'>家庭横拓图</text>
+    </navigator>
+  </view>
+
+  <view class="cu-item" wx:if="{{info.buried_at !=''}}">
+    <view class='content'>
+      <text class='cuIcon-circlefill text-grey'></text>
+      <text class='text-grey'>离世日期　{{info.buried_at}}</text>
+    </view>
+  </view>
+  <view class="cu-item" wx:if="{{info.buried !=''}}">
+    <view class='content'>
+      <text class='cuIcon-circlefill text-grey'></text>
+      <text class='text-grey'>葬于　{{info.buried}}</text>
+    </view>
+  </view>
+</view>
+
+<include src="../layouts/tabBar.wxml" />

@@ -1,0 +1,17 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">热门推荐</view></cu-custom>
+
+
+<view class="bg-img bg-mask padding-tb-xl" style="background-image: url('{{extenstion.thumb}}')">
+  <view class='padding-xl text-white'>
+    <view class='padding-xs text-xl'>{{extenstion.title}}</view>
+    <view class='padding-xs'>{{extenstion.introduction}}</view>
+  </view>
+</view>
+<view class='bg-white padding radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'></view>
+  <view class='text-content'>
+    <rich-text nodes="{{extenstion.content}}" bindtap="tap"></rich-text>
+    
+  </view>
+</view>
+<include src="../layouts/tabBar.wxml" />

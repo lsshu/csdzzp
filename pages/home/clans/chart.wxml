@@ -1,0 +1,7 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">家庭横拓图</view>
+</cu-custom>
+
+<image style="width: {{width}}px; height: {{height}}px; background-color: {{bgcolor}};" mode="{{mode}}" src="{{chart}}"></image>
+<include src="../layouts/tabBar.wxml" />

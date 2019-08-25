@@ -1,0 +1,17 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">关于</view></cu-custom>
+
+<view class='margin bg-white padding-xl radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'>关于{{base.surnames.project_name}}</view>
+  <view class='text-content'>
+  
+    <view>你们好！各位光临陈氏电子族谱的朋友！</view>
+    <view class='margin-top-sm'>陈氏族谱是陈姓大家族里的子孙的资料汇总，也是陈姓大家族著名人士的仕履生涯的简括提要，同时也是陈姓大家族著名人生的翔实可靠而又丰富多彩的史料。</view>
+    <view class='margin-top-sm text-lg'>联系方式</view>
+    <view class='margin-top-sm'>地址：深圳市龙岗区宝龙街道宝荷欣苑二栋A座1楼102号</view>
+    <view class='margin-top-sm'>电话：13822394125</view>
+    <view class='margin-top-sm'>邮箱：406187025@qq.com</view>
+    
+  </view>
+</view>
+
+<include src="../../layouts/tabBar.wxml" />

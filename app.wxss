@@ -1,0 +1,12 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+page{
+  padding-bottom: 100rpx;
+}
+
+.wuss-notice{
+  padding:10rpx 12rpx !important;
+}
+.wuss-notice-voice{
+  min-width:20rpx !important;
+}

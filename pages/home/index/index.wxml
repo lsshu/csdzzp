@@ -1,0 +1,43 @@
+<image src='{{base.surnames.base_img}}' wx:if="{{base.surnames.base_img}}" mode='widthFix' class='png' style='width:100%;height:486rpx'></image>
+<cu-custom bgColor="bg-gradual-blue" wx:else isBack="{{false}}">
+  <view slot="content">{{base.surnames.project_name}}</view>
+</cu-custom>
+
+<w-notice wx:if="{{base.notice.title}}" icon="voice" text="{{ base.notice.title }}" 
+	color="{{base.notice.color?base.notice.color:'#f76a24'}}" speed="20"
+	backgroundColor="{{base.notice.bg_color?base.notice.bg_color:'rgba(254, 252, 236, 1)'}}" 
+  mode="link" url="/pages/notice/notice"
+/>
+
+<swiper wx:if="{{base.extenstions.length>0}}" class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="4000" duration="500">
+  <swiper-item wx:for="{{base.extenstions}}" wx:key>
+    <navigator url='/pages/home/extenstion/show?extenstion_id={{item.id}}' open-type="navigateTo" style="display:initial">
+      <image src="{{item.thumb}}" mode="aspectFill"></image>
+    </navigator>
+  </swiper-item>
+</swiper>
+
+
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='icon-titles text-orange '></text> 最新文章
+  </view>
+</view>
+
+<view class="cu-card article no-card">
+  <navigator wx:for="{{articles}}" wx:key class="cu-item shadow" url='/pages/home/article/show?article_id={{item.article_id}}' open-type="navigateTo">
+    <view class="title text-cut">{{item.title}}</view>
+    <view class="content">
+      <image src="{{item.thumb}}" mode="aspectFill"></image>
+      <view class="desc">
+        <view class='text-content'> {{item.introduction}}</view>
+        <view>
+          <view class='cu-tag bg-red light sm round'>{{item.cate_name}}</view>
+          <view class='cu-tag bg-green light sm round'>{{item.time}}</view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>
+
+<include src="../layouts/tabBar.wxml" />

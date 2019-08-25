@@ -1,0 +1,22 @@
+<view class='box' style="position:relative">
+  <view class="cu-bar tabbar bg-white" style="position:fixed;bottom:0;z-index:10;width:100%;">
+    <navigator class="action text-{{barActive=='index'?'green':'gray'}}" url="/pages/home/index/index" open-type="reLaunch">
+      <view class='cuIcon-homefill'></view> 首页
+    </navigator>
+    <!-- <view class="action text-{{barActive==''?'green':'gray'}}">
+      <view class='cuIcon-similar'></view> 分类
+    </view> -->
+    <!-- <navigator class="action text-gray add-action" url="/pages/publish/publish">
+      <button class='cu-btn cuIcon-add bg-green shadow'></button>
+      发布
+    </navigator> -->
+    <navigator class="action text-{{barActive=='clan'?'green':'gray'}}" url="/pages/home/clans/clans" open-type="reLaunch">
+      <view class='cuIcon-friend'></view>
+      家族
+    </navigator>
+    <navigator class="action text-{{barActive=='user'?'green':'gray'}}"  url="/pages/home/user/about/about" open-type="reLaunch">
+      <view class='cuIcon-my'></view>
+      我的
+    </navigator>
+  </view>
+</view>

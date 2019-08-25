@@ -1,0 +1,7 @@
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">热门通告</view>
+</cu-custom>
+
+
+<include src="../layouts/tabBar.wxml" />

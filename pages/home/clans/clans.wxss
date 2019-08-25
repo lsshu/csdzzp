@@ -1,0 +1,19 @@
+.content_search{
+  position:fixed;
+  width:100%;
+  z-index:1;
+}
+scroll-view{
+  display: inline;
+  
+
+}
+.padding_title{
+  padding-top:115rpx;
+}
+.cu-item>.search_content{
+  left:110rpx !important;
+}
+.cu-item .search_text_align{
+  text-align: left;
+}

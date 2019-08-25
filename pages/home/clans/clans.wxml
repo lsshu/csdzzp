@@ -1,0 +1,97 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+  <view slot="content">{{base.surnames.project_name}}</view>
+  <view class="action" slot="right">
+    <view class="cu-load load-icon {{isLoad?'loading':'over'}}"></view>
+  </view>
+
+</cu-custom>
+
+
+<view class="content_search" style="top:{{CustomBar}}px;">
+  <view class="cu-bar bg-white search" >
+    <view class='search-form round'>
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="输入搜索的名字" confirm-type="search" bindinput="searchInput"></input>
+    </view>
+    <view class='action'>
+      <button class='cu-btn bg-gradual-green shadow-blur round' bindtap='searchData' data-target="Modal">搜索</button>
+    </view>
+  </view>
+
+  <w-drop-menu
+  height="88rpx"
+  defaultColor="#999999"
+  activeColor="#ff8800"
+  options="{{ options }}"
+  wuss-class="w-drop-menu"
+  wuss-class-content="w-drop-menu-content"
+  wuss-class-item="w-drop-menu-item"
+  wuss-class-item-text="w-drop-menu-text"
+  bind:onChange="handleChange"
+  >
+  </w-drop-menu>
+
+</view>
+
+
+
+
+
+<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
+    <view class="padding padding_title">{{title}}</view>
+    <view class="cu-list menu-avatar no-padding">
+      <view class="cu-item" wx:for="{{data.data}}" wx:key bindtap='toClanUser' data-clans_id="{{item.clans_id}}">
+        <view class="cu-avatar round lg">{{item.level}}</view>
+        <view class="content">
+          <view class="text-grey">{{item.name}}
+            <text class="text-abc"></text>
+          </view>
+          <view class="text-gray text-sm">
+            性别：{{item.sex}}；
+            {{item.wife?'妻:'+item.wife+'；':''}}
+            {{item.other?'其它:'+item.other+'':''}}
+          </view>
+        </view>
+      </view>
+    </view>
+</scroll-view>
+
+
+<view class="cu-modal {{SearchModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">{{search_title}}</view>
+      <view class="action" bindtap="hideSearchModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view>
+      
+      <scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" scroll-with-animation="true" enable-back-to-top="true">
+          <view class="cu-list menu-avatar no-padding">
+            <view class="cu-item" wx:for="{{search_data}}" wx:key bindtap='toClanUser' data-clans_id="{{item.clans_id}}">
+              <view class="cu-avatar round sub">{{item.level}}</view>
+              <view class="content search_content">
+                <view class="text-grey">{{item.name}}
+                  <text class="text-abc"></text>
+                </view>
+                <view class="text-gray text-sm search_text_align">
+                  性别：{{item.sex}}；
+                  {{item.wife?'妻:'+item.wife+'；':''}}
+                  {{item.other?'其它:'+item.other+'':''}}
+                </view>
+              </view>
+            </view>
+          </view>
+      </scroll-view>
+
+
+
+
+
+    </view>
+    <view class="text-gray text-sm">只搜索关键词前5个</view>
+  </view>
+</view>
+
+<include src="../layouts/tabBar.wxml" />

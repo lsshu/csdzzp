@@ -1,0 +1,36 @@
+<scroll-view scroll-y class="scrollPage">
+  <view class="UCenter-bg">
+    <image src="{{base.surnames.logo_img}}" class="png" mode="widthFix"></image>
+    <view class="text-xl">{{base.surnames.project_name}}
+      <text class="text-df">{{base.surnames.edition}}</text>
+    </view>
+    <view class="margin-top-sm">
+      <text>{{base.surnames.copyright}}</text>
+    </view>
+  </view>
+  
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/user/about/contact" hover-class="none">
+        <text class="cuIcon-likefill text-red"></text>
+        <text class="text-grey">联系方式</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/user/about/support" hover-class="none">
+        <text class="cuIcon-writefill text-green"></text>
+        <text class="text-grey">意见反馈</text>
+      </navigator>
+    </view>
+    <!-- <view class="cu-item arrow">
+      <view class="content" bindtap="showQrcode">
+        <text class="cuIcon-appreciatefill text-red"></text>
+        <text class="text-grey">赞赏支持</text>
+      </view>
+    </view>
+
+     -->
+
+  </view>
+</scroll-view>
+<include src="../../layouts/tabBar.wxml" /> 

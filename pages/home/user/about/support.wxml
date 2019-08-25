@@ -1,0 +1,16 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">技术支持</view></cu-custom>
+
+<view class='margin bg-white padding-xl radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'>{{base.surnames.project_name}}技术部门</view>
+  <view class='text-content'>
+  
+    <view>你们好！各位光临陈氏电子族谱的朋友！</view>
+    <view class='margin-top-sm'>关于在使用本小程序里，出现的各种问题，或者有新的想法和创意。可以直接联系本公司技术部门。</view>
+    <view class='margin-top-sm text-lg'>联系方式（小林）</view>
+    <view class='margin-top-sm'>电话：15976549865</view>
+    <view class='margin-top-sm'>邮箱：admin@lsshu.cn</view>
+    
+  </view>
+</view>
+
+<include src="../../layouts/tabBar.wxml" />

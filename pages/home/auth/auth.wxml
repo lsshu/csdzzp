@@ -1,0 +1,12 @@
+<view class='UCenter-bg'>
+  <image src='{{base.surnames.logo_img}}' class='png' mode='widthFix'></image>
+  <view class='text-xl'>{{base.surnames.project_name}}
+    <text class='text-df'>{{base.surnames.edition}}</text>
+  </view>
+  <view class='margin-top-sm'>
+    <text>{{base.surnames.copyright}}</text>
+  </view>
+</view>
+<view class='padding-xl'>
+  <button class='cu-btn  bg-green shadow lg block' open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">微信登录</button>
+</view>

@@ -1,0 +1,19 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">热门文章</view>
+</cu-custom>
+
+<view class="bg-img bg-mask padding-tb-xl" style="background-image: url('{{article.thumb}}')">
+  <view class='padding-xl text-white'>
+    <view class='padding-xs text-xl'>{{article.title}}</view>
+    <view class='padding-xs'>{{article.introduction}}</view>
+  </view>
+</view>
+<view class='bg-white padding radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'></view>
+  <view class='text-content'>
+    <rich-text nodes="{{article.content}}" bindtap="tap"></rich-text>
+    
+  </view>
+</view>
+<include src="../layouts/tabBar.wxml" />
