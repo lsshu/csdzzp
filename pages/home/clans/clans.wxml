@@ -40,7 +40,7 @@
 <scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
     <view class="padding padding_title">{{title}}</view>
     <view class="cu-list menu-avatar no-padding">
-      <view class="cu-item" wx:for="{{data.data}}" wx:key bindtap='toClanUser' data-clans_id="{{item.clans_id}}">
+      <view class="cu-item" wx:for="{{data.data}}" wx:key="index" bindtap='toClanUser' data-clans_id="{{item.clans_id}}">
         <view class="cu-avatar round lg">{{item.level}}</view>
         <view class="content">
           <view class="text-grey">{{item.name}}
@@ -69,7 +69,7 @@
       
       <scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" scroll-with-animation="true" enable-back-to-top="true">
           <view class="cu-list menu-avatar no-padding">
-            <view class="cu-item" wx:for="{{search_data}}" wx:key bindtap='toClanUser' data-clans_id="{{item.clans_id}}">
+            <view class="cu-item" wx:for="{{search_data}}" wx:key="index" bindtap='toClanUser' data-clans_id="{{item.clans_id}}">
               <view class="cu-avatar round sub">{{item.level}}</view>
               <view class="content search_content">
                 <view class="text-grey">{{item.name}}

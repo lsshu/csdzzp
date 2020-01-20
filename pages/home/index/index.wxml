@@ -25,7 +25,7 @@
 </view>
 
 <view class="cu-card article no-card">
-  <navigator wx:for="{{articles}}" wx:key class="cu-item shadow" url='/pages/home/article/show?article_id={{item.article_id}}' open-type="navigateTo">
+  <navigator wx:for="{{articles}}" wx:key="index" class="cu-item shadow" url='/pages/home/article/show?article_id={{item.article_id}}' open-type="navigateTo">
     <view class="title text-cut">{{item.title}}</view>
     <view class="content">
       <image src="{{item.thumb}}" mode="aspectFill"></image>

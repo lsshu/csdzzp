@@ -1,0 +1,115 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">{{base.surnames.project_name}}</view>
+  <view class="action" slot="right">
+    <view class="cu-load load-icon {{isLoad?'loading':'over'}}"></view>
+  </view>
+</cu-custom>
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+	<view class="cu-form-group margin-top">
+		<view class="title">地区</view>
+		<picker mode="region" bindchange="regionChange" value="{{region}}" custom-item="{{customItem}}" name="region">
+			<view class="picker">
+				{{region[0]}}，{{region[1]}}，{{region[2]}}
+			</view>
+		</picker>
+	</view>
+
+	<view class="cu-form-group">
+		<view class="title">村庄</view>
+		<picker bindchange="changeVillage" bindtap="tapVillage" value="{{villages[village_index].value}}" range-key="name" range="{{villages}}" name="village_id">
+			<view class="picker">
+				{{village_index?villages[village_index].name:'请选择村庄!'}} 
+			</view>
+		</picker>
+	</view>
+
+	<view class="cu-form-group">
+		<view class="title">搜索</view>
+		<input placeholder="输入您的父亲名字搜索!" name="parent_name" bindinput="inputParent"></input>
+		<button class="cu-btn bg-green shadow" bindtap="searchParent">搜索</button>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">父亲</view>
+		<picker bindchange="changeParent" bindtap="tapParent" value="{{parents[parent_index].value}}" range-key="name" range="{{parents}}" name="parent_id">
+			<view class="picker">
+				{{parent_index?parents[parent_index].name:'请选择你的父亲!'}} 
+			</view>
+		</picker>
+	</view>
+
+	<view class="cu-form-group margin-top">
+		<view class="title">姓名</view>
+		<input placeholder="请输入你的姓名" name="name"></input>
+	</view>
+
+  <view class="cu-form-group">
+		<view class="title">生日</view>
+		<picker mode="date" value="{{birth_at}}" start="1900-01-01" end="2025-01-01" bindchange="DateChange" name="birth_at">
+			<view class="picker">
+				{{birth_at}}
+			</view>
+		</picker>
+	</view>
+
+  <view class="cu-form-group">
+		<view class="title">其它</view>
+		<input placeholder="请输入其它信息" name="other"></input>
+	</view>
+
+  <view class="cu-form-group">
+    <view class="title">性别</view>
+		<switch class="switch-sex" checked name="sex"></switch>
+	</view>
+
+	<view class="cu-form-group">
+		<view class="title">手机号码</view>
+		<input placeholder="输入手机号码" name="phone" bindinput="inputPhone"></input>
+
+		<button wx:if="{{code_button_disabled}}" class="cu-btn bg-green shadow" bindtap="tapGetCode" disabled>{{code_button_txt}}</button>
+		<button wx:else class="cu-btn bg-green shadow" bindtap="tapGetCode">{{code_button_txt}}</button>
+	</view>
+
+	<view class="cu-form-group">
+		<view class="title">验证码</view>
+		<input placeholder="输入手机验证码" name="code"></input>
+	</view>
+
+  <view class="cu-form-group margin-top">
+		<view class="title">婚否</view>
+		<switch name="is_marry" bindchange="isMarry"></switch>
+	</view>
+
+  <view wx:if="{{is_marry}}" class="cu-form-group">
+		<view class="title">妻子/丈夫</view>
+		<input placeholder="请输入你的妻子/丈夫姓名" name="wife"></input>
+	</view>
+
+  <view class="cu-form-group margin-top">
+		<view class="title">离世</view>
+		<switch name="is_buried" bindchange="isBuried"></switch>
+	</view>
+
+  <view wx:if="{{is_buried}}" class="cu-form-group">
+		<view class="title">日期</view>
+		<picker mode="date" value="{{buried_at}}" start="1900-01-01" end="2020-01-01" bindchange="DateChange" name="buried_at">
+			<view class="picker">
+				{{buried_at}}
+			</view>
+		</picker>
+	</view>
+
+  <view wx:if="{{is_buried}}" class="cu-form-group align-start">
+		<view class="title">葬于</view>
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="请输入葬于何处!" name="buried"></textarea>
+	</view>
+
+	<view class="padding-xl">
+		<button formType="submit" class="cu-btn block bg-blue margin-tb-sm lg">
+    	<text wx:if="{{loading}}" class="cuIcon-loading2 iconfont-spin"></text> 提交
+		</button>
+		<button formType="reset" class="cu-btn block bg-default margin-tb-sm lg">重置</button>
+	</view>
+	
+</form>
