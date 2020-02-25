@@ -1,4 +1,4 @@
-const req = require('../../../utils/request.js');
+const req = require('../../utils/request.js');
 Page({
 
   /**

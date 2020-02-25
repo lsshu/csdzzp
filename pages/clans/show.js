@@ -1,14 +1,11 @@
-const req = require('../../../utils/request.js');
+const req = require('../../utils/request.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    barActive: "index",
-    cardCur: 0,
-    DotStyle: true,
-    text: '',
+    barActive: "clan"
   },
 
   /**
@@ -21,25 +18,18 @@ Page({
         //如果失败跳到授权
         if (!res.authSetting['scope.userInfo']) {
           wx.redirectTo({
-            url: '/pages/home/auth/auth'
+            url: '/pages/auth/auth'
           })
         }
       }
     });
-    //获取基础信息
-    var base = wx.getStorageSync('base') || {}
-    this.setData({ base: base.data });
-
-    //获取文章列表
-    var index_articles = wx.getStorageSync('index_articles') || {};
-    if (undefined == index_articles.timestamp || index_articles.timestamp < Date.now() - 1000 * 60 * 10) {
-      req.post('/articles').then((result) => {
-        wx.setStorageSync('index_articles', result.data)
-        this.setData({ articles: result.data.data });
-      });
-    } else {
-      this.setData({ articles: index_articles.data });
-    }
+    
+    let clans_id = options.clans_id;
+    req.post('/getClan/' + clans_id).then((result) => {
+      if (result.statusCode == 200) {
+        this.setData({ info: result.data.data.info, family: result.data.data.family });
+      }
+    });
   },
 
   /**

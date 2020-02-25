@@ -46,7 +46,7 @@
 
   <view class="cu-form-group">
 		<view class="title">生日</view>
-		<picker mode="date" value="{{birth_at}}" start="1900-01-01" end="2025-01-01" bindchange="DateChange" name="birth_at">
+		<picker mode="date" value="{{birth_at}}" start="1900-01-01" end="2025-01-01" bindchange="birthAtDateChange" name="birth_at">
 			<view class="picker">
 				{{birth_at}}
 			</view>
@@ -93,7 +93,7 @@
 
   <view wx:if="{{is_buried}}" class="cu-form-group">
 		<view class="title">日期</view>
-		<picker mode="date" value="{{buried_at}}" start="1900-01-01" end="2020-01-01" bindchange="DateChange" name="buried_at">
+		<picker mode="date" value="{{buried_at}}" start="1900-01-01" end="2030-01-01" bindchange="buriedAtDateChange" name="buried_at">
 			<view class="picker">
 				{{buried_at}}
 			</view>
@@ -109,7 +109,73 @@
 		<button formType="submit" class="cu-btn block bg-blue margin-tb-sm lg">
     	<text wx:if="{{loading}}" class="cuIcon-loading2 iconfont-spin"></text> 提交
 		</button>
-		<button formType="reset" class="cu-btn block bg-default margin-tb-sm lg">重置</button>
+		<!-- <button formType="reset" class="cu-btn block bg-default margin-tb-sm lg">重置</button> -->
 	</view>
 	
 </form>
+
+
+
+
+<view class="cu-modal {{store_status=='success'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">{{model.title}}</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">{{model.content}}</view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub text-red solid-left" bindtap="deleteExamineClan">放弃审核</view>
+      <view class="action margin-0 flex-sub text-green " bindtap="openChoosesPayModal"><text class="cuIcon-moneybag"></text>微信支持</view>
+      
+      <!-- <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal">确定</view> -->
+    </view>
+  </view>
+</view>
+
+
+
+<view class="cu-modal bottom-modal {{chooses_pay=='ChoosePay'?'show':''}}" bindtap="closePayItem">
+  <view class="cu-dialog" catchtap>
+    <view class="cu-bar bg-white">
+      <view class="action text-blue" bindtap="closePayItem">取消</view>
+      <view class="action text-green" bindtap="requestPay">确定</view>
+    </view>
+    <view class="grid col-3 padding-sm">
+      <view wx:for="{{chooses_pay_item}}" class="padding-xs" wx:key="index">
+        <button class="cu-btn orange lg block {{item.checked?'bg-orange':'line-orange'}}" bindtap="choosesPayItem" data-value="{{item.value}}"> {{item.name}}
+          <view class="cu-tag sm round {{item.checked?'bg-white text-orange':'bg-orange'}}" wx:if="{{item.hot}}">HOT</view>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="cu-modal {{pay_model=='success'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">支付成功</view>
+      <view class="action" bindtap="hidePayModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <view class="flex-sub text-center">
+        <view class="solid-bottom text-sl padding">
+          <text class=" cuIcon-roundcheckfill text-green"></text>
+        </view>
+        <view class="padding">感谢您的支持，您的信息稍后会被审核；在审核期间如有问题将会电话联系你！</view>
+      </view>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hidePayModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="hidePayModal">确定</button>
+
+      </view>
+    </view>
+  </view>
+</view>

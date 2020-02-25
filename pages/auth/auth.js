@@ -1,4 +1,4 @@
-const req = require('../../../utils/request.js');
+const req = require('../../utils/request.js');
 const app = getApp();
 Page({
   data: {
@@ -19,7 +19,7 @@ Page({
     if (!this.logged && e.detail.userInfo) {
       app.globalData.userInfo = e.detail.userInfo;
       wx.reLaunch({
-        url: '/pages/home/index/index',
+        url: '/pages/index/index',
       })
     }
   }

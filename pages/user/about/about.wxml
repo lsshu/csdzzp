@@ -24,8 +24,8 @@
     </view>
 
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/home/clans/examine" hover-class="none">
-        <text class="cuIcon-writefill text-green"></text>
+      <navigator class="content" url="/pages/clans/examine" hover-class="none">
+        <text class="cuIcon-add text-blue"></text>
         <text class="text-grey">申请审核</text>
       </navigator>
     </view>

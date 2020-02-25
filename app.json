@@ -1,8 +1,14 @@
 {
   "pages": [
-    "pages/home/clans/examine",
-    "pages/home/index/index"
-    
+    "pages/index/index",
+    "pages/clans/clans",
+    "pages/user/about/about",
+    "pages/user/about/contact",
+    "pages/user/about/support",
+    "pages/clans/examine",
+    "pages/clans/show",
+    "pages/clans/chart",
+    "pages/article/show"
   ],
   "window": {
     "backgroundTextStyle": "light",

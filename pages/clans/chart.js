@@ -1,34 +1,21 @@
-const req = require('../../../utils/request.js');
+const req = require('../../utils/request.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    barActive: "clan"
+    barActive: "clan",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 获取用户信息 
-    wx.getSetting({
-      success: res => {
-        //如果失败跳到授权
-        if (!res.authSetting['scope.userInfo']) {
-          wx.redirectTo({
-            url: '/pages/auth/auth'
-          })
-        }
-      }
-    });
-    
     let clans_id = options.clans_id;
-    req.post('/getClan/' + clans_id).then((result) => {
-      if (result.statusCode == 200) {
-        this.setData({ info: result.data.data.info, family: result.data.data.family });
-      }
+    let chart = req.url('/chart/' + clans_id);
+    req.get('/chart/' + clans_id + '?size=1').then((result) => {
+      this.setData({ chart: chart, height: result.data.height, width: result.data.width });
     });
   },
 

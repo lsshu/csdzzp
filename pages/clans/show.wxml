@@ -88,21 +88,21 @@
     </view>
   </view>
 
-  <view class="cu-item arrow" wx:for="{{family.brother}}" wx:key wx:if="{{family.brother != undefined }}">
+  <view class="cu-item arrow" wx:for="{{family.brother}}" wx:key="index" wx:if="{{family.brother != undefined }}">
     <navigator class='content' hover-class='none' url='show?clans_id={{item.clans_id}}' open-type="navigateTo">
       <text class='cuIcon-male text-green'></text>
       <text class='text-grey'>兄弟　{{item.name}}</text>
     </navigator>
   </view>
 
-  <view class="cu-item" wx:for="{{family.sister}}" wx:key wx:if="{{family.sister != undefined }}">
+  <view class="cu-item" wx:for="{{family.sister}}" wx:key="index" wx:if="{{family.sister != undefined }}">
     <view class='content'>
       <text class='cuIcon-female text-orange'></text>
       <text class='text-grey'>姐妹　{{item.name}}</text>
     </view>
   </view>
 
-  <view class="cu-item arrow" wx:for="{{family.children}}" wx:key wx:if="{{family.children != undefined }}">
+  <view class="cu-item arrow" wx:for="{{family.children}}" wx:key="index" wx:if="{{family.children != undefined }}">
     <navigator class='content' hover-class='none' url='show?clans_id={{item.clans_id}}' open-type="navigateTo">
       <text class='cuIcon-{{item.sex == "男" ? "male":"female"}} text-{{item.sex == "男" ?"cyan":"yellow"}}'></text>
       <text class='text-grey'>{{item.sex == "男" ?"儿子":"女儿"}}　{{item.name}}</text>
